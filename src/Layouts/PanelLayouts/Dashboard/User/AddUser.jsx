@@ -1,14 +1,18 @@
 import { useState } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 import { addUser } from "../../../../Apis/User/UserServise";
 import Input from "../../../../Components/Input";
 import Button from "../../../../Components/NewWork";
 
 const AddUser = () => {
+     const queryClient = useQueryClient();
+
      const [formData, setFormData] = useState({
-          firstName: "",
-          lastName: "",
+          firstname: "",
+          lastname: "",
           email: "",
+          phone: "",
           city: "",
           address: "",
      });
@@ -17,11 +21,12 @@ const AddUser = () => {
      const mutation = useMutation({
           mutationFn: addUser,
           onSuccess: (data) => {
-               alert("✅ User created successfully!");
+               toast.success("User added successfully! ✅");
+               queryClient.invalidateQueries(["users"]);
                console.log("Response:", data);
                setFormData({
-                    firstName: "",
-                    lastName: "",
+                    firstname: "",
+                    lastname: "",
                     email: "",
                     phone: "",
                     city: "",
@@ -29,7 +34,7 @@ const AddUser = () => {
                });
           },
           onError: (error) => {
-               alert(`❌ ${error.message || "Something went wrong"}`);
+               toast.error(`Error: ${error.message || "Something went wrong"} ❌`);
                console.error(error);
           },
      });
@@ -38,34 +43,35 @@ const AddUser = () => {
      const handleSubmit = (e) => {
           e.preventDefault();
 
-          const data = new FormData();
-          alert(formData.firstName, formData.lastName, formData.email, formData.city)
-          data.append("firstName", formData.firstName);
-          data.append("lastName", formData.lastName);
-          data.append("email", formData.email);
-          data.append("phone", formData.phone);
-          data.append("city", formData.city);
-          if (formData.image) data.append("image", formData.address);
+          // ✅ Send as JSON object, not FormData
+          const userData = {
+               firstname: formData.firstname,
+               lastname: formData.lastname,
+               email: formData.email,
+               phone: formData.phone,
+               city: formData.city,
+               address: formData.address,
+          };
 
-          mutation.mutate(data);
+          mutation.mutate(userData);
      };
 
      return (
-          <section className="w-full h-max bg-authCard p-6 flex flex-col gap-3 rounded-xl">
+          <section className="w-full h-max bg-midnight p-6 flex flex-col gap-3 rounded-xl">
                <div className="text-white/80 text-xl font-bold">Add user</div>
 
                <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
                     <Input
                          type="text"
                          placeHolder="Enter First Name"
-                         value={formData.firstName}
-                         onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                         value={formData.firstname}
+                         onChange={(e) => setFormData({ ...formData, firstname: e.target.value })}
                     />
                     <Input
                          type="text"
                          placeHolder="Enter Last Name"
-                         value={formData.lastName}
-                         onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                         value={formData.lastname}
+                         onChange={(e) => setFormData({ ...formData, lastname: e.target.value })}
                     />
                     <Input
                          type="email"
@@ -75,8 +81,8 @@ const AddUser = () => {
                     />
                     <Input
                          type="tel"
-                         placeHolder="Enter phone Name"
-                         value={formData.city}
+                         placeHolder="Enter Phone Number"
+                         value={formData.phone}
                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     />
                     <Input
@@ -102,3 +108,4 @@ const AddUser = () => {
 };
 
 export default AddUser;
+
