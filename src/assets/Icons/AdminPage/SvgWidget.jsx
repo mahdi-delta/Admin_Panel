@@ -18,3 +18,4 @@ const SvgWidget = ({className}) => {
 };
 
 export default SvgWidget;
+

@@ -34,3 +34,4 @@ const AnimatedBorder = ({ borderSize="500", children }) => {
 };
 
 export default AnimatedBorder;
+

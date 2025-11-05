@@ -16,3 +16,4 @@ const SvgCharts = ({ className }) => {
 };
 
 export default SvgCharts;
+

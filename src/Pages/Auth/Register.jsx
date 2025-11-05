@@ -68,9 +68,9 @@ const Register = () => {
      };
 
      return (
-          <section className="w-full min-h-screen bg-dark text-white flex justify-center items-center">
+          <section className="w-full min-h-screen bg-void text-white flex justify-center items-center">
                <AnimatedBorder borderSize="1000">
-                    <div className="bg-authCard inherit-rounded overflow-hidden flex flex-col">
+                    <div className="bg-midnight inherit-rounded overflow-hidden flex flex-col">
                          {/* Top Logo Section */}
                          <div className="w-full">
                               <div
@@ -89,8 +89,8 @@ const Register = () => {
                          </div>
 
                          {/* Main Form Section */}
-                         <div className="flex flex-col space-y-7 bg-authCard px-7">
-                              <div className="bg-authCard">
+                         <div className="flex flex-col space-y-7 bg-midnight px-7">
+                              <div className="bg-midnight">
                                    <div
                                         id="text"
                                         className="flex justify-center items-center font-bold text-2xl text-[#CCCEEF] pt-7 pb-5"
@@ -117,9 +117,9 @@ const Register = () => {
                               </div>
 
                               {/* Divider */}
-                              <div className=" bg-authCard flex flex-col justify-center items-center relative">
+                              <div className=" bg-midnight flex flex-col justify-center items-center relative">
                                    <div className="w-full h-[1px] bg-main/30 absolute"></div>
-                                   <p className="absolute bg-authCard px-2 text-melogray">
+                                   <p className="absolute bg-midnight px-2 text-slate">
                                         Or continue with
                                    </p>
                               </div>
@@ -133,7 +133,7 @@ const Register = () => {
                                         onChange={handleChange}
                                         placeHolder="Please Enter Your Name"
                                    >
-                                        <SvgName className="w-5 h-5 stroke-melogray/50 group-focus-within:stroke-main" />
+                                        <SvgName className="w-5 h-5 stroke-slate/50 group-focus-within:stroke-main" />
                                    </Input>
 
                                    <Input
@@ -143,7 +143,7 @@ const Register = () => {
                                         onChange={handleChange}
                                         placeHolder="Please Enter Your Email"
                                    >
-                                        <SvgEmail className="w-5 h-5 fill-melogray/50 group-focus-within:fill-main" />
+                                        <SvgEmail className="w-5 h-5 fill-slate/50 group-focus-within:fill-main" />
                                    </Input>
 
                                    <Input
@@ -153,7 +153,7 @@ const Register = () => {
                                         onChange={handleChange}
                                         placeHolder="Please Enter Your Password"
                                    >
-                                        <SvgLock className="w-5 h-5 stroke-melogray/50 group-focus-within:stroke-main" />
+                                        <SvgLock className="w-5 h-5 stroke-slate/50 group-focus-within:stroke-main" />
                                    </Input>
 
                                    <Input
@@ -163,12 +163,10 @@ const Register = () => {
                                         onChange={handleChange}
                                         placeHolder="Please Confirm Your Password"
                                    >
-                                        <SvgLock className="w-5 h-5 stroke-melogray/50 group-focus-within:stroke-main" />
+                                        <SvgLock className="w-5 h-5 stroke-slate/50 group-focus-within:stroke-main" />
                                    </Input>
 
-                                   <div>
-                                        {() => (alert(captchaData))}
-                                   </div>
+                                   <div>{() => alert(captchaData)}</div>
                                    {/* ✅ CAPTCHA Section */}
                                    <div className="flex items-center justify-between gap-3 mt-2">
                                         {captchaLoading ? (

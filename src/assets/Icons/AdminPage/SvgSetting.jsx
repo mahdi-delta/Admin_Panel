@@ -13,3 +13,4 @@ const SvgSetting = ({className}) => {
 };
 
 export default SvgSetting;
+

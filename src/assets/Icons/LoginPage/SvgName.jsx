@@ -15,3 +15,4 @@ const SvgName = ({className}) => {
 };
 
 export default SvgName;
+

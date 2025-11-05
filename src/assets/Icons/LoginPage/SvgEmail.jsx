@@ -21,3 +21,4 @@ const SvgEmail = ({ className }) => {
 };
 
 export default SvgEmail;
+

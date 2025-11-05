@@ -21,3 +21,4 @@ const DashboardBarChart = () => {
 };
 
 export default DashboardBarChart;
+

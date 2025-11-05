@@ -12,3 +12,4 @@ const SvgNotification = ({ className }) => {
 };
 
 export default SvgNotification;
+

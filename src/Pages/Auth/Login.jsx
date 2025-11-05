@@ -47,11 +47,10 @@ const Login = () => {
           queryFn: getCaptcha, // ۲. تابعی که داده را می‌آورد
      });
 
-
      return (
-          <section className=" w-full min-h-screen bg-dark text-white flex justify-center items-center">
+          <section className=" w-full min-h-screen bg-void text-white flex justify-center items-center">
                <AnimatedBorder borderSize="1000">
-                    <div className="bg-authCard inherit-rounded overflow-hidden flex flex-col">
+                    <div className="bg-midnight inherit-rounded overflow-hidden flex flex-col">
                          <div className="w-full">
                               <div
                                    style={{
@@ -67,8 +66,8 @@ const Login = () => {
                                    <div className="w-full h-[1px] animate-line bg-[linear-gradient(to_right,transparent_49%,#695cfa_50%,#695cfa_50%,transparent_51%)] bg-[200%,100%] "></div>
                               </div>
                          </div>
-                         <div className="flex flex-col space-y-7 bg-authCard px-7">
-                              <div className="bg-authCard">
+                         <div className="flex flex-col space-y-7 bg-midnight px-7">
+                              <div className="bg-midnight">
                                    <div
                                         id="text"
                                         className="flex justify-center items-center font-bold text-2xl text-[#CCCEEF] pt-7 pb-5"
@@ -93,9 +92,9 @@ const Login = () => {
                                         </Button>
                                    </div>
                               </div>
-                              <div className=" bg-authCard flex flex-col justify-center items-center relative">
+                              <div className=" bg-midnight flex flex-col justify-center items-center relative">
                                    <div className="w-full h-[1px] bg-main/30 absolute"></div>
-                                   <p className="absolute bg-authCard px-2 text-melogray">
+                                   <p className="absolute bg-midnight px-2 text-slate">
                                         Or continue with
                                    </p>
                               </div>
@@ -105,14 +104,14 @@ const Login = () => {
                                         type="email"
                                         placeHolder="Please Enter Your Email"
                                    >
-                                        <SvgEmail className="w-5 h-5 fill-melogray/50  transition-colors duration-400 group-focus-within:fill-main" />
+                                        <SvgEmail className="w-5 h-5 fill-slate/50  transition-colors duration-400 group-focus-within:fill-main" />
                                    </Input>
                                    <Input
                                         // onChange={(e) => setPassword(e.target.value)}
                                         type="password"
                                         placeHolder="Please Enter Your Password"
                                    >
-                                        <SvgLock className="w-5 h-5 stroke-melogray/50 transition-colors duration-400 fill-transparent group-focus-within:stroke-main" />
+                                        <SvgLock className="w-5 h-5 stroke-slate/50 transition-colors duration-400 fill-transparent group-focus-within:stroke-main" />
                                    </Input>
                                    <div className="flex justify-end">
                                         <Underline>Forget Password?</Underline>

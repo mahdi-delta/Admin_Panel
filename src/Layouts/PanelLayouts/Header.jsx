@@ -17,12 +17,10 @@ const Header = ({ SidebarActive, setSidebarActive, ActivePage }) => {
 
      return (
           <section
-               className={`max-w-full h-max p-2 pl-5 pr-2  bg-authCard flex max-mid:flex-row-reverse items-center rounded-xl max-sm:justify-end justify-start `}
+               className={`max-w-full h-max p-2 pl-5 pr-2  bg-midnight flex max-mid:flex-row-reverse items-center rounded-xl max-sm:justify-end justify-start `}
           >
                <div className="flex flex-col items-center">
-                    <button
-                         onClick={() => setSidebarActive(!SidebarActive)}
-                    >
+                    <button onClick={() => setSidebarActive(!SidebarActive)}>
                          {SidebarActive ? (
                               <MenuIcon SidebarActive={SidebarActive} />
                          ) : (
@@ -38,19 +36,19 @@ const Header = ({ SidebarActive, setSidebarActive, ActivePage }) => {
                     </span>
                </div>
                {/* <div className="ml-auto mr-6 cursor-pointer relative">
-                    <span className="flex justify-center items-center text-white/80 text-sm absolute w-5 h-5 rounded-full -right-1 -top-1 border-2 border-white/80 bg-authCard">
+                    <span className="flex justify-center items-center text-white/80 text-sm absolute w-5 h-5 rounded-full -right-1 -top-1 border-2 border-white/80 bg-midnight">
                          3
                     </span>
                     <SvgNotification className="fill-white/80 w-10 h-10" />
                </div> */}
                <div className="min-mid:ml-auto max-mid:mr-auto">
                     <div className="flex items-center relative hover:shadow-[0px_0px_20px_20px_#fffffff]">
-                         <SvgSearch className="w-6 h-6 stroke-3 stroke-logoPurple absolute left-3 cursor-pointer" />
+                         <SvgSearch className="w-6 h-6 stroke-3 stroke-cosmic-purple absolute left-3 cursor-pointer" />
                          <div>
                               <input
                                    type="text"
                                    placeholder="Search..."
-                                   className="w-max text-white/80 placeholder:text-white/80 border-1 border-melogray/70 rounded-xl py-3 pr-5 pl-12 outline-none"
+                                   className="w-max text-white/80 placeholder:text-white/80 border-1 border-slate/70 rounded-xl py-3 pr-5 pl-12 outline-none"
                               />
                          </div>
                     </div>

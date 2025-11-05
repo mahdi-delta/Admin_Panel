@@ -26,3 +26,4 @@ const SvgDashboard = ({className}) => {
 };
 
 export default SvgDashboard;
+

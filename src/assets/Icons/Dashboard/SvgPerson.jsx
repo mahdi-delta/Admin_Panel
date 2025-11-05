@@ -31,3 +31,4 @@ const SvgPerson = ({ className }) => {
 };
 
 export default SvgPerson;
+

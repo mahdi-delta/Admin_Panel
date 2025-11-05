@@ -28,3 +28,4 @@ const SvgPlugins = ({className}) => {
 };
 
 export default SvgPlugins;
+

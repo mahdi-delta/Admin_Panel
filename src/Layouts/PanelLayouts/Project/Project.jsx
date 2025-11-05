@@ -15,7 +15,7 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 const Project = () => {
      return (
           <section className="w-full h-max text-white flex flex-col  gap-5">
-               <div className="w-full h-100 p-6 bg-authCard">
+               <div className="w-full h-100 p-6 bg-midnight">
                     <Bar data={ProjectChartData} options={ProjectChartOptions}/>
                </div>
           </section>
@@ -23,3 +23,4 @@ const Project = () => {
 };
 
 export default Project;
+

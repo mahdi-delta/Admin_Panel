@@ -16,3 +16,4 @@ const SvgTable = ({className}) => {
 };
 
 export default SvgTable;
+

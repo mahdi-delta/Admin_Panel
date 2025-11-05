@@ -37,7 +37,7 @@ const EditUser = () => {
     if (!user) return <p>User not found.</p>;
 
     return (
-        <div className="max-w-xl mx-auto mt-10 bg-authCard p-6 rounded-xl shadow-lg">
+        <div className="max-w-xl mx-auto mt-10 bg-midnight p-6 rounded-xl shadow-lg">
             <h2 className="text-2xl font-semibold text-white mb-6">Edit User</h2>
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 <input
@@ -80,3 +80,4 @@ const EditUser = () => {
 };
 
 export default EditUser;
+

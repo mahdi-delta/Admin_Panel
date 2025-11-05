@@ -41,3 +41,4 @@ const SvgGoogle = ({className}) => {
 };
 
 export default SvgGoogle;
+

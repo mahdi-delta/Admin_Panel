@@ -16,8 +16,8 @@ const Sidebar = ({ SidebarActive, ActivePage, setSidebarActive, setActivePage })
                }`}
           >
                <div
-                    className={`w-full h-max rounded-xl bg-authCard   ${
-                         SidebarActive ? "p-4 pb-4 border-melogray max-mid:border-r-2 max-mid:rounded-0" : "p-3 pb-0"
+                    className={`w-full h-max rounded-xl bg-midnight   ${
+                         SidebarActive ? "p-4 pb-4 border-slate max-mid:border-r-2 max-mid:rounded-0" : "p-3 pb-0"
                     }`}
                >
                     <div className="max-w-80 flex flex-col gap-6 justify-center items-center">
@@ -70,7 +70,7 @@ const Sidebar = ({ SidebarActive, ActivePage, setSidebarActive, setActivePage })
                                                        display: !SidebarActive && "none",
                                                        transform: Open !== index && "scaleY(0%)",
                                                   }}
-                                                  className={`text-[15px] text-melogray flex flex-col justify-center  pl-5 transition-h-scale duration-300 relative`}
+                                                  className={`text-[15px] text-slate flex flex-col justify-center  pl-5 transition-h-scale duration-300 relative`}
                                              >
                                                   <SidebarChildItem
                                                        key={item.NC}
@@ -95,3 +95,4 @@ const Sidebar = ({ SidebarActive, ActivePage, setSidebarActive, setActivePage })
 };
 
 export default Sidebar;
+

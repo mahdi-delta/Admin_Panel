@@ -5,10 +5,11 @@ const Input = ({ type, placeHolder, children="", onChange=null }) => {
                <input
                     type={type}
                     placeholder={placeHolder}
-                    className="w-full border-none outline-none placeholder:text-melogray text-gray-400 peer"
+                    className="w-full border-none outline-none placeholder:text-slate text-gray-400 peer"
                />
           </div>
      );
 };
 
 export default Input;
+

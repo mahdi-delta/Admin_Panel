@@ -33,7 +33,7 @@ const DeleteUser = () => {
      if (!user) return <p className="text-center mt-10">Loading...</p>;
 
      return (
-          <div className="max-w-md mx-auto mt-20 bg-authCard p-8 rounded-xl text-center shadow-lg">
+          <div className="max-w-md mx-auto mt-20 bg-midnight p-8 rounded-xl text-center shadow-lg">
                <h2 className="text-2xl text-red-400 font-semibold mb-4">Delete User</h2>
                <p className="text-gray-300 mb-6">
                     Are you sure you want to delete{" "}
@@ -61,3 +61,4 @@ const DeleteUser = () => {
 };
 
 export default DeleteUser;
+

@@ -21,3 +21,4 @@ const MenuIcon = ({ SidebarActive }) => {
 };
 
 export default MenuIcon;
+

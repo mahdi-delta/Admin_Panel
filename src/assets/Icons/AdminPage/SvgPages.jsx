@@ -22,3 +22,4 @@ const SvgPages = ({className}) => {
 };
 
 export default SvgPages;
+

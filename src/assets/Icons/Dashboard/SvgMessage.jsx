@@ -19,3 +19,4 @@ const SvgMessage = ({className}) => {
 };
 
 export default SvgMessage;
+

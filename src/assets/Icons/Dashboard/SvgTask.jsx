@@ -20,3 +20,4 @@ const SvgTask = ({ className }) => {
 };
 
 export default SvgTask;
+

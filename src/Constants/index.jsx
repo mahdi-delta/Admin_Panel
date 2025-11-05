@@ -104,7 +104,7 @@ const PagesChild = [
 export const AdminPanelItemData = [
      {
           svg: (
-               <SvgDashboard className="w-7 h-7 stroke-melogray fill-none stroke-1 group-hover:stroke-white group-active:stroke-white" />
+               <SvgDashboard className="w-7 h-7 stroke-slate fill-none stroke-1 group-hover:stroke-white group-active:stroke-white" />
           ),
           text: "Dashboard",
           child: DashboardChild,
@@ -112,7 +112,7 @@ export const AdminPanelItemData = [
      },
      {
           svg: (
-               <SvgApps className="w-7 h-7 stroke-melogray stroke-1 fill-none group-hover:stroke-white" />
+               <SvgApps className="w-7 h-7 stroke-slate stroke-1 fill-none group-hover:stroke-white" />
           ),
           text: "Apps",
           child: AppsChild,
@@ -120,39 +120,39 @@ export const AdminPanelItemData = [
      },
      {
           svg: (
-               <SvgCharts className="w-7 h-7 stroke-melogray stroke-1 fill-none group-hover:stroke-white" />
+               <SvgCharts className="w-7 h-7 stroke-slate stroke-1 fill-none group-hover:stroke-white" />
           ),
           text: "Charts",
           child: ChartsChild,
           NC: 6,
      },
      {
-          svg: <SvgBootstrap className="w-7 h-7 fill-melogray stroke-1 group-hover:fill-white" />,
+          svg: <SvgBootstrap className="w-7 h-7 fill-slate stroke-1 group-hover:fill-white" />,
           text: "Bootstraps",
           child: BootstrapsChild,
           NC: 15,
      },
      {
-          svg: <SvgPlugins className="w-7 h-7 fill-melogray stroke-1 group-hover:fill-white" />,
+          svg: <SvgPlugins className="w-7 h-7 fill-slate stroke-1 group-hover:fill-white" />,
           text: "Plugins",
           child: PluginsChild,
           NC: 9,
      },
      {
-          svg: <SvgWidget className="w-7 h-7 stroke-melogray stroke-1 group-hover:stroke-white" />,
+          svg: <SvgWidget className="w-7 h-7 stroke-slate stroke-1 group-hover:stroke-white" />,
           text: "Widget",
           child: [],
           NC: 0,
      },
      {
-          svg: <SvgForms className="w-7 h-7 fill-melogray stroke-1 group-hover:fill-white" />,
+          svg: <SvgForms className="w-7 h-7 fill-slate stroke-1 group-hover:fill-white" />,
           text: "Forms",
           child: FormsChild,
           NC: 5,
      },
      {
           svg: (
-               <SvgTable className="w-7 h-7 stroke-melogray stroke-1 fill-none group-hover:stroke-white" />
+               <SvgTable className="w-7 h-7 stroke-slate stroke-1 fill-none group-hover:stroke-white" />
           ),
           text: "Table",
           child: TableChild,
@@ -160,14 +160,14 @@ export const AdminPanelItemData = [
      },
      {
           svg: (
-               <SvgPages className="w-7 h-7 stroke-melogray stroke-1 fill-none group-hover:stroke-white" />
+               <SvgPages className="w-7 h-7 stroke-slate stroke-1 fill-none group-hover:stroke-white" />
           ),
           text: "Pages",
           child: PagesChild,
           NC: 8,
      },
      {
-          svg: <SvgSetting className="w-7 h-7 fill-melogray stroke-1 group-hover:fill-white" />,
+          svg: <SvgSetting className="w-7 h-7 fill-slate stroke-1 group-hover:fill-white" />,
           text: "Setting",
           child: [],
           NC: 0,
@@ -236,3 +236,4 @@ export const DashboardPageRatingData = [
 //           Content: "Unread Messages",
 //      },
 // ];
+

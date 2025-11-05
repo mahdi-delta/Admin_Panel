@@ -28,3 +28,4 @@ const SvgApps = ({ className }) => {
 };
 
 export default SvgApps;
+

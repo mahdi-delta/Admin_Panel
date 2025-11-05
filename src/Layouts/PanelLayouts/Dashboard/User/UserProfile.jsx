@@ -37,7 +37,7 @@ const UserProfile = ({
                                    <span
                                         className={`inline-block px-3 py-1 text-xs font-semibold rounded-full ${
                                              User.online == 1
-                                                  ? "bg-green-600 text-white/80"
+                                                  ? "bg-matrix-green text-white/80"
                                                   : "bg-red-600 text-white/80"
                                         }`}
                                    >
@@ -62,7 +62,7 @@ const UserProfile = ({
 
                          <div>
                               <button
-                                   onClick={() =>[ setProfileActive(-1), setSelectedUserId(null)]}
+                                   onClick={() => [setProfileActive(-1), setSelectedUserId(null)]}
                                    className="absolute top-3 right-5 text-2xl text-red-400 hover:text-indigo-400 transition duration-200"
                               >
                                    ×

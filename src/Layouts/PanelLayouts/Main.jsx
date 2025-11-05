@@ -11,7 +11,7 @@ const Main = ({ ActivePage }) => {
                : selectedItem?.page || "No content available";
 
      return (
-          <section className="w-full h-max bg-dark rounded-xl text-white overflow-auto ">
+          <section className="w-full h-max bg-void rounded-xl text-white overflow-auto ">
                {displayPage}
           </section>
      );

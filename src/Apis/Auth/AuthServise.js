@@ -44,3 +44,4 @@ export const forgetPassword = async (emailData) => {
      if (!res.ok) throw new Error("Failed to send reset link");
      return res.json();
 };
+
