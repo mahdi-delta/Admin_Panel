@@ -1,219 +1,150 @@
-import { useQuery, useMutation } from "@tanstack/react-query";
-import { getCaptcha, registerUser } from "../../Apis/Auth/AuthServise";
 import { useState } from "react";
-import AnimatedBorder from "../../Components/AnimatedBorder";
-import boxed_logo from "../../assets/Images/Auth/boxed-logo.png";
-import SvgGoogle from "../../assets/Icons/LoginPage/SvgGoogle";
-import SvgFacebook from "../../assets/Icons/LoginPage/SvgFacebook";
 import SvgEmail from "../../assets/Icons/LoginPage/SvgEmail";
 import SvgLock from "../../assets/Icons/LoginPage/SvgLock";
 import SvgName from "../../assets/Icons/LoginPage/SvgName";
-import Underline from "../../Components/Underline";
 import Input from "../../Components/Input";
-import Button from "../../Components/Button";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Register = () => {
      const navigate = useNavigate();
-     const [formData, setFormData] = useState({
-          name: "",
-          email: "",
-          password: "",
-          confirmPassword: "",
-          captchaValue: "",
-     });
+     const [name, setName] = useState("");
+     const [email, setEmail] = useState("");
+     const [password, setPassword] = useState("");
+     const [confirmPassword, setConfirmPassword] = useState("");
 
-     // ✅ Fetch captcha from API
-     const {
-          data: captchaData,
-          refetch: refreshCaptcha,
-          isFetching: captchaLoading,
-     } = useQuery({
-          queryKey: ["captcha"],
-          queryFn: getCaptcha,
-          staleTime: 0,
-     });
-
-     const captchaSvg = captchaData?.captcha || null;
-     const captchaId = captchaData?.captchaId || null;
-
-     // ✅ Handle form input
-     const handleChange = (e) => {
-          setFormData({ ...formData, [e.target.name]: e.target.value });
-     };
-
-     // ✅ Register mutation
-     const registerMutation = useMutation({
-          mutationFn: (userData) => registerUser(userData),
-          onSuccess: () => {
-               navigate("/login");
-          },
-     });
-
-     // ✅ Handle submit
      const handleSubmit = (e) => {
           e.preventDefault();
-          if (formData.password !== formData.confirmPassword) {
-               alert("Passwords do not match!");
+
+          // Check if all fields are filled
+          if (!name || !email || !password || !confirmPassword) {
+               toast.error("Please fill in all fields");
                return;
           }
 
-          registerMutation.mutate({
-               name: formData.name,
-               email: formData.email,
-               password: formData.password,
-               captchaId,
-               captchaValue: formData.captchaValue,
-          });
+          // Validate name (at least 3 characters, only letters and spaces)
+          if (name.trim().length < 3) {
+               toast.error("Name must be at least 3 characters long");
+               return;
+          }
+
+          if (!/^[a-zA-Z\s]+$/.test(name.trim())) {
+               toast.error("Name can only contain letters and spaces");
+               return;
+          }
+
+          // Validate email format
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+               toast.error("Please enter a valid email address");
+               return;
+          }
+
+          // Validate password length
+          if (password.length < 6) {
+               toast.error("Password must be at least 6 characters long");
+               return;
+          }
+
+          // Validate password match
+          if (password !== confirmPassword) {
+               toast.error("Passwords don't match!");
+               return;
+          }
+
+          toast.success("Account created successfully!");
+          setTimeout(() => navigate("/login"), 1500);
      };
 
      return (
-          <section className="w-full min-h-screen bg-void text-white flex justify-center items-center">
-               <AnimatedBorder borderSize="1000">
-                    <div className="bg-midnight inherit-rounded overflow-hidden flex flex-col">
-                         {/* Top Logo Section */}
-                         <div className="w-full">
-                              <div
-                                   style={{
-                                        backgroundSize: "contain",
-                                        backgroundPosition: "center",
-                                        backgroundImage: `URL(${boxed_logo})`,
-                                   }}
-                                   className="w-full h-35 relative
-                                        before:absolute before:content-[''] before:w-full before:h-full before:left-0 before:top-0
-                                        before:bg-[linear-gradient(to_bottom,#7064E933,transparent)] before:z-20"
-                              ></div>
-                              <div className="w-full h-[1px] bg-[linear-gradient(to_right,#101122_10%,#7064E911_50%,#101122_90%)] overflow-y-visible">
-                                   <div className="w-full h-[1px] animate-line bg-[linear-gradient(to_right,transparent_49%,#695cfa_50%,#695cfa_50%,transparent_51%)] bg-[200%,100%]" />
-                              </div>
+          <div className="min-h-screen bg-gradient-to-br from-void via-midnight to-void flex items-center justify-center px-4 py-8 relative overflow-hidden">
+               {/* Animated background orbs */}
+               <div className="absolute top-20 left-10 w-96 h-96 bg-electric-purple/8 rounded-full blur-3xl animate-pulse" />
+               <div className="absolute bottom-20 right-10 w-96 h-96 bg-cosmic-purple/8 rounded-full blur-3xl animate-pulse delay-1000" />
+               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-electric-purple/8 rounded-full blur-3xl animate-pulse delay-500" />
+
+               <div className="w-full max-w-md relative z-10">
+                    {/* Glass card */}
+                    <div className="bg-midnight/70 backdrop-blur-xl border-2 border-electric-purple/20 rounded-3xl p-8 shadow-2xl">
+                         {/* Header */}
+                         <div className="text-center mb-8">
+                              <h1 className="text-3xl font-bold bg-gradient-to-r from-electric-purple via-cosmic-purple to-electric-purple bg-clip-text text-transparent mb-2">
+                                   Create Account
+                              </h1>
+                              <p className="text-slate text-sm">Join us and start your journey</p>
                          </div>
 
-                         {/* Main Form Section */}
-                         <div className="flex flex-col space-y-7 bg-midnight px-7">
-                              <div className="bg-midnight">
-                                   <div
-                                        id="text"
-                                        className="flex justify-center items-center font-bold text-2xl text-[#CCCEEF] pt-7 pb-5"
-                                   >
-                                        <h1>Create Account</h1>
-                                   </div>
-                                   <div
-                                        id="login-with-other-way"
-                                        className="flex justify-center items-center space-x-3"
-                                   >
-                                        <Button
-                                             text="Login with Google"
-                                             onClick={() => navigate("/")}
-                                        >
-                                             <SvgGoogle className="w-5 h-5" />
-                                        </Button>
-                                        <Button
-                                             text="Login with Facebook"
-                                             onClick={() => navigate("/")}
-                                        >
-                                             <SvgFacebook className="w-5 h-5" />
-                                        </Button>
-                                   </div>
-                              </div>
+                         {/* Form */}
+                         <form onSubmit={handleSubmit} className="space-y-4">
+                              <Input
+                                   type="text"
+                                   name="name"
+                                   value={name}
+                                   onChange={(e) => setName(e.target.value)}
+                                   placeHolder="Please Enter Your Name"
+                              >
+                                   <SvgName className="w-5 h-5 stroke-slate/50 group-focus-within:stroke-electric-purple transition-colors duration-300" />
+                              </Input>
 
-                              {/* Divider */}
-                              <div className=" bg-midnight flex flex-col justify-center items-center relative">
-                                   <div className="w-full h-[1px] bg-main/30 absolute"></div>
-                                   <p className="absolute bg-midnight px-2 text-slate">
-                                        Or continue with
-                                   </p>
-                              </div>
+                              <Input
+                                   type="email"
+                                   name="email"
+                                   value={email}
+                                   onChange={(e) => setEmail(e.target.value)}
+                                   placeHolder="Please Enter Your Email"
+                              >
+                                   <SvgEmail className="w-5 h-5 fill-slate/50 group-focus-within:fill-electric-purple transition-colors duration-300" />
+                              </Input>
 
-                              {/* Form */}
-                              <form onSubmit={handleSubmit} className="flex flex-col gap-4 pb-7">
-                                   <Input
-                                        type="text"
-                                        name="name"
-                                        value={formData.name}
-                                        onChange={handleChange}
-                                        placeHolder="Please Enter Your Name"
-                                   >
-                                        <SvgName className="w-5 h-5 stroke-slate/50 group-focus-within:stroke-main" />
-                                   </Input>
+                              <Input
+                                   type="password"
+                                   name="password"
+                                   value={password}
+                                   onChange={(e) => setPassword(e.target.value)}
+                                   placeHolder="Please Enter Your Password"
+                              >
+                                   <SvgLock className="w-5 h-5 stroke-slate/50 group-focus-within:stroke-electric-purple transition-colors duration-300" />
+                              </Input>
 
-                                   <Input
-                                        type="email"
-                                        name="email"
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                        placeHolder="Please Enter Your Email"
-                                   >
-                                        <SvgEmail className="w-5 h-5 fill-slate/50 group-focus-within:fill-main" />
-                                   </Input>
+                              <Input
+                                   type="password"
+                                   name="confirmPassword"
+                                   value={confirmPassword}
+                                   onChange={(e) => setConfirmPassword(e.target.value)}
+                                   placeHolder="Please Confirm Your Password"
+                              >
+                                   <SvgLock className="w-5 h-5 stroke-slate/50 group-focus-within:stroke-electric-purple transition-colors duration-300" />
+                              </Input>
 
-                                   <Input
-                                        type="password"
-                                        name="password"
-                                        value={formData.password}
-                                        onChange={handleChange}
-                                        placeHolder="Please Enter Your Password"
-                                   >
-                                        <SvgLock className="w-5 h-5 stroke-slate/50 group-focus-within:stroke-main" />
-                                   </Input>
+                              <button
+                                   type="submit"
+                                   className="w-full py-4 rounded-xl font-semibold text-white bg-gradient-to-r from-electric-purple via-cosmic-purple to-electric-purple hover:shadow-lg hover:shadow-cosmic-purple/50 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                              >
+                                   Sign Up
+                              </button>
 
-                                   <Input
-                                        type="password"
-                                        name="confirmPassword"
-                                        value={formData.confirmPassword}
-                                        onChange={handleChange}
-                                        placeHolder="Please Confirm Your Password"
-                                   >
-                                        <SvgLock className="w-5 h-5 stroke-slate/50 group-focus-within:stroke-main" />
-                                   </Input>
-
-                                   <div>{() => alert(captchaData)}</div>
-                                   {/* ✅ CAPTCHA Section */}
-                                   <div className="flex items-center justify-between gap-3 mt-2">
-                                        {captchaLoading ? (
-                                             <p>Loading...</p>
-                                        ) : (
-                                             <img
-                                                  src={captchaSvg}
-                                                  alt="captcha"
-                                                  className="w-40 h-16 rounded border border-gray-600"
-                                             />
-                                        )}
-                                        <button
-                                             type="button"
-                                             onClick={() => refreshCaptcha()}
-                                             className="text-sm text-blue-400 hover:text-blue-300"
-                                        >
-                                             Refresh 🔄
-                                        </button>
-                                   </div>
-
-                                   <Input
-                                        type="text"
-                                        name="captchaValue"
-                                        value={formData.captchaValue}
-                                        onChange={handleChange}
-                                        placeHolder="Enter Captcha Text"
-                                   />
-
+                              <p className="text-center text-slate text-sm">
+                                   Already have an account?{" "}
                                    <button
-                                        type="submit"
-                                        disabled={registerMutation.isLoading}
-                                        className="w-full transition-brightness duration-300 bg-[linear-gradient(to_right,#9737F1)] hover:brightness-120 text-sm py-4 rounded-[8px] font-semibold cursor-pointer active:scale-98"
+                                        type="button"
+                                        onClick={() => navigate("/login")}
+                                        className="text-electric-purple hover:text-cosmic-purple transition-colors duration-200 font-medium"
                                    >
-                                        {registerMutation.isLoading ? "Signing up..." : "Sign up"}
+                                        Login
                                    </button>
-
-                                   <div className="flex gap-2 text-gray-500">
-                                        Already have an account?
-                                        <Underline color="#afb0b3">
-                                             <a onClick={() => navigate("/login")}>Login</a>
-                                        </Underline>
-                                   </div>
-                              </form>
-                         </div>
+                              </p>
+                         </form>
                     </div>
-               </AnimatedBorder>
-          </section>
+
+                    {/* Back to Home button */}
+                    <button
+                         onClick={() => navigate("/")}
+                         className="w-full mt-6 py-3 rounded-3xl font-medium text-slate hover:text-white bg-shadow/50 hover:bg-shadow/80 backdrop-blur-sm border border-electric-purple/20 hover:border-electric-purple/40 transition-all duration-300"
+                    >
+                         Back to Home
+                    </button>
+               </div>
+          </div>
      );
 };
 

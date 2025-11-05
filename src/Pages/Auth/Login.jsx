@@ -1,143 +1,105 @@
-import AnimatedBorder from "../../Components/AnimatedBorder";
-import boxed_logo from "../../assets/Images/Auth/boxed-logo.png";
-import SvgGoogle from "../../assets/Icons/LoginPage/SvgGoogle";
-import SvgFacebook from "../../assets/Icons/LoginPage/SvgFacebook";
+import { useState } from "react";
 import SvgEmail from "../../assets/Icons/LoginPage/SvgEmail";
 import SvgLock from "../../assets/Icons/LoginPage/SvgLock";
-import Underline from "../../Components/Underline";
 import Input from "../../Components/Input";
-import Button from "../../Components/Button";
 import { useNavigate } from "react-router-dom";
-import { getCaptcha, loginUser } from "../../Apis/Auth/AuthServise";
-import { useMutation, useQuery } from "@tanstack/react-query";
-// import { useState } from "react";
+import toast from "react-hot-toast";
 
 const Login = () => {
      const navigate = useNavigate();
+     const [email, setEmail] = useState("");
+     const [password, setPassword] = useState("");
 
-     // const loginMutation = useMutation({
-     //      mutationFn: loginUser,
-     //      onSuccess: (data) => {
-     //           alert("login was succes full");
-     //           navigate("/admin");
-     //      },
-     //      onError: (error) => {
-     //           alert("error : " + error.response?.data?.message || " we have aproblem");
-     //      },
-     //      onSettled: () => {
-     //           console.log("login was fully complited");
-     //      },
-     // });
+     const handleSubmit = (e) => {
+          e.preventDefault();
 
-     // const [UserName, setUserName] = useState("");
-     // const [Password, setPassword] = useState("");
+          if (!email || !password) {
+               toast.error("Please fill in all fields");
+               return;
+          }
 
-     // const handleSubmit = (e) => {
-     //      e.preventDefault();
-     //      loginMutation.mutate({ UserName, Password });
-     // };
-
-     const {
-          data: captchaData, // داده‌های برگشتی (شامل ID و Image)
-          isLoading: isCaptchaLoading, // آیا هنوز لود نشده؟
-          isError: isCaptchaError, // آیا خطایی پیش آمده؟
-          refetch: refreshCaptcha, // تابعی برای درخواست مجدد کپچا
-     } = useQuery({
-          queryKey: ["captcha"], // ۱. یک کلید منحصربه‌فرد برای این داده
-          queryFn: getCaptcha, // ۲. تابعی که داده را می‌آورد
-     });
+          toast.success("Login successful! 🎉");
+          setTimeout(() => {
+               navigate("/admin");
+          }, 1000);
+     };
 
      return (
-          <section className=" w-full min-h-screen bg-void text-white flex justify-center items-center">
-               <AnimatedBorder borderSize="1000">
-                    <div className="bg-midnight inherit-rounded overflow-hidden flex flex-col">
-                         <div className="w-full">
-                              <div
-                                   style={{
-                                        backgroundSize: "contain",
-                                        backgroundPosition: "center",
-                                        backgroundImage: `URL(${boxed_logo})`,
-                                   }}
-                                   className="w-full h-35 relative
-                              before:absolute before:content-[''] before:w-full before:h-full before:left-0 before:top-0
-                              before:bg-[linear-gradient(to_bottom,#7064E933,transparent)] before:z-20"
-                              ></div>
-                              <div className="w-full h-[1px] bg-[linear-gradient(to_right,#101122_10%,#7064E911_50%,#101122_90%)] overflow-y-visible">
-                                   <div className="w-full h-[1px] animate-line bg-[linear-gradient(to_right,transparent_49%,#695cfa_50%,#695cfa_50%,transparent_51%)] bg-[200%,100%] "></div>
-                              </div>
+          <div className="min-h-screen bg-gradient-to-br from-void via-midnight to-void flex items-center justify-center px-4 py-8 relative overflow-hidden">
+               {/* Animated Background Elements */}
+               <div className="absolute top-20 left-10 w-96 h-96 bg-electric-purple/8 rounded-full blur-3xl animate-pulse"></div>
+               <div className="absolute bottom-20 right-10 w-96 h-96 bg-cosmic-purple/8 rounded-full blur-3xl animate-pulse delay-1000"></div>
+               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-electric-purple/8 rounded-full blur-3xl animate-pulse delay-500"></div>
+
+               {/* Main Content */}
+               <div className="w-full max-w-md relative z-10">
+                    <div className="bg-midnight/70 backdrop-blur-xl rounded-3xl border-2 border-electric-purple/20 shadow-2xl p-8">
+                         {/* Header */}
+                         <div className="text-center mb-8">
+                              <h1 className="text-3xl font-bold bg-gradient-to-r from-electric-purple via-cosmic-purple to-electric-purple bg-clip-text text-transparent mb-2">
+                                   Welcome Back
+                              </h1>
+                              <p className="text-slate text-sm">Sign in to your account</p>
                          </div>
-                         <div className="flex flex-col space-y-7 bg-midnight px-7">
-                              <div className="bg-midnight">
-                                   <div
-                                        id="text"
-                                        className="flex justify-center items-center font-bold text-2xl text-[#CCCEEF] pt-7 pb-5"
+
+                         {/* Form */}
+                         <form onSubmit={handleSubmit} className="space-y-4">
+                              <Input
+                                   value={email}
+                                   onChange={(e) => setEmail(e.target.value)}
+                                   type="email"
+                                   placeHolder="Enter Your Email"
+                              >
+                                   <SvgEmail className="w-5 h-5 fill-slate/50 group-focus-within:fill-electric-purple transition-colors duration-300" />
+                              </Input>
+
+                              <Input
+                                   value={password}
+                                   onChange={(e) => setPassword(e.target.value)}
+                                   type="password"
+                                   placeHolder="Enter Your Password"
+                              >
+                                   <SvgLock className="w-5 h-5 stroke-slate/50 group-focus-within:stroke-electric-purple transition-colors duration-300" />
+                              </Input>
+
+                              <div className="flex justify-end">
+                                   <button
+                                        type="button"
+                                        className="text-sm text-electric-purple/70 hover:text-electric-purple transition-colors duration-300"
                                    >
-                                        <h1>Welcome Back</h1>
-                                   </div>
-                                   <div
-                                        id="login-with-other-way"
-                                        className="flex justify-center items-center space-x-3"
-                                   >
-                                        <Button
-                                             text="Login with Google"
-                                             onClick={() => navigate("/")}
-                                        >
-                                             <SvgGoogle className="w-5 h-5" />
-                                        </Button>
-                                        <Button
-                                             text="Login with Facebook"
-                                             onClick={() => navigate("/")}
-                                        >
-                                             <SvgFacebook className="w-5 h-5" />
-                                        </Button>
-                                   </div>
-                              </div>
-                              <div className=" bg-midnight flex flex-col justify-center items-center relative">
-                                   <div className="w-full h-[1px] bg-main/30 absolute"></div>
-                                   <p className="absolute bg-midnight px-2 text-slate">
-                                        Or continue with
-                                   </p>
-                              </div>
-                              <form className="flex flex-col gap-4 pb-7">
-                                   <Input
-                                        // onChange={(e) => setUserName(e.target.value)}
-                                        type="email"
-                                        placeHolder="Please Enter Your Email"
-                                   >
-                                        <SvgEmail className="w-5 h-5 fill-slate/50  transition-colors duration-400 group-focus-within:fill-main" />
-                                   </Input>
-                                   <Input
-                                        // onChange={(e) => setPassword(e.target.value)}
-                                        type="password"
-                                        placeHolder="Please Enter Your Password"
-                                   >
-                                        <SvgLock className="w-5 h-5 stroke-slate/50 transition-colors duration-400 fill-transparent group-focus-within:stroke-main" />
-                                   </Input>
-                                   <div className="flex justify-end">
-                                        <Underline>Forget Password?</Underline>
-                                   </div>
-                                   <div>
-                                        {isCaptchaError && <div>Error chaptcha</div>}
-                                        {isCaptchaLoading && <div>Loading captcha</div>}
-                                        <div>{captchaData}</div>
-                                        <button type="button" onClick={refreshCaptcha}>
-                                             refresh
-                                        </button>
-                                   </div>
-                                   <button className="w-full transition-brightness duration-300 bg-[linear-gradient(to_right,#9737F1)] hover:brightness-120 text-sm py-4 rounded-[8px] font-semibold cursor-pointer active:scale-98">
-                                        Sign in
+                                        Forgot Password?
                                    </button>
-                                   <div className="flex gap-2 text-gray-500">
-                                        Don't have an account?
-                                        <Underline color="#afb0b3">
-                                             <a onClick={() => navigate("/register")}>Sign Up</a>
-                                        </Underline>
-                                   </div>
-                              </form>
-                         </div>
+                              </div>
+
+                              <button
+                                   type="submit"
+                                   className="w-full py-4 rounded-xl font-semibold text-white bg-gradient-to-r from-electric-purple via-cosmic-purple to-electric-purple hover:shadow-lg hover:shadow-cosmic-purple/50 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                              >
+                                   Sign In
+                              </button>
+
+                              <p className="text-center text-slate text-sm">
+                                   Don't have an account?{" "}
+                                   <button
+                                        type="button"
+                                        onClick={() => navigate("/register")}
+                                        className="text-electric-purple hover:text-cosmic-purple transition-colors duration-200 font-medium"
+                                   >
+                                        Sign Up
+                                   </button>
+                              </p>
+                         </form>
                     </div>
-               </AnimatedBorder>
-          </section>
+
+                    {/* Back to Home button */}
+                    <button
+                         onClick={() => navigate("/")}
+                         className="w-full mt-6 py-3 rounded-3xl font-medium text-slate hover:text-white bg-shadow/50 hover:bg-shadow/80 backdrop-blur-sm border border-electric-purple/20 hover:border-electric-purple/40 transition-all duration-300"
+                    >
+                         Back to Home
+                    </button>
+               </div>
+          </div>
      );
 };
 

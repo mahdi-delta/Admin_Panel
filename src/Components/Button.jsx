@@ -4,7 +4,7 @@ const Button = ({ children, text, onClick, type = "button", disabled = false }) 
                onClick={onClick}
                type={type}
                disabled={disabled}
-               className="border-1 border-main/50 box flex items-center gap-2 hover:bg-main transition-colors duration-500 disabled:opacity-50 disabled:cursor-not-allowed"
+               className="border-1 border-electric-purple/50 box flex items-center gap-2 hover:bg-electric-purple transition-colors duration-500 disabled:opacity-50 disabled:cursor-not-allowed"
           >
                {children}
                <p className="text-gray-300 text-sm tracking-tight cursor-pointer">{text}</p>
@@ -13,4 +13,3 @@ const Button = ({ children, text, onClick, type = "button", disabled = false }) 
 };
 
 export default Button;
-
