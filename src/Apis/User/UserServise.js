@@ -24,8 +24,8 @@ export const updateUser = async (userId, updatedData) => {
           body: JSON.stringify(updatedData),
      });
 
-     if (!response.ok) throw new Error("faild to update user data");
-     return await response.json;
+     if (!response.ok) throw new Error("Failed to update user data");
+     return await response.json();
 };
 
 // Delete user data
@@ -56,11 +56,12 @@ export const deleteUser = async (userId) => {
 export const addUser = async (data) => {
      const response = await fetch(`${API_URL}`, {
           method: "POST",
-          headers: { "content-Type": "application/json" },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),
      });
 
-     if(!response.ok) throw new Error("faild to Post data")
+     if (!response.ok) throw new Error("Failed to add user");
 
      return response.json();
 };
+
