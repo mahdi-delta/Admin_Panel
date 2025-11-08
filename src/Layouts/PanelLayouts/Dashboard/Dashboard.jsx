@@ -7,7 +7,10 @@ import ShowUsers from "./User/ShowUsers";
 const Dashboard = () => {
      return (
           <section className="bg-void text-white flex flex-col gap-3 rounded-xl">
-               <div id="rating" className="w-full h-max grid grid-cols-4 max-mid:grid-cols-2 gap-3">
+               {/* <div
+                    id="rating"
+                    className="w-full h-max grid grid-cols-4 max-mid:grid-cols-2 max-sm:grid-cols-2 gap-3"
+               >
                     {DashboardPageRatingData.map((item) => (
                          <div
                               key={item.Content}
@@ -30,7 +33,7 @@ const Dashboard = () => {
                               </div>
                          </div>
                     ))}
-               </div>
+               </div> */}
                <div className="w-full h-max flex flex-col gap-3 rounded-xl">
                     <ShowUsers />
                </div>

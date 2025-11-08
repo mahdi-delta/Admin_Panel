@@ -12,7 +12,7 @@ const App = () => {
                     position="top-center"
                     reverseOrder={false}
                     toastOptions={{
-                         duration: 3000,
+                         duration: 2000,
                          style: {
                               background: "#0f1021",
                               color: "#fff",

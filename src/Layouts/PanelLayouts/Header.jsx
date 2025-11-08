@@ -17,7 +17,7 @@ const Header = ({ SidebarActive, setSidebarActive, ActivePage }) => {
 
      return (
           <section
-               className={`max-w-full h-max p-2 pl-5 pr-2  bg-midnight flex max-mid:flex-row-reverse items-center rounded-xl max-sm:justify-end justify-start `}
+               className={`max-w-full h-max p-2 pl-5 pr-2 bg-midnight flex max-mid:flex-row-reverse items-center rounded-xl max-sm:justify-end justify-start gap-3 max-mid:gap-2`}
           >
                <div className="flex flex-col items-center">
                     <button onClick={() => setSidebarActive(!SidebarActive)}>
@@ -28,9 +28,16 @@ const Header = ({ SidebarActive, setSidebarActive, ActivePage }) => {
                          )}
                     </button>
                </div>
-               <div>
+               <div className="max-mid:hidden">
                     {/* fix arrow */}
-                    <span className="text-white/80 px-6 text-2xl font-semibold">
+                    <span className="text-white/80 px-6 text-2xl font-semibold truncate">
+                         {AdminPanelItemData[ActivePage.parent]?.child[ActivePage.child]?.text ||
+                              "Admin Panel"}
+                    </span>
+               </div>
+               {/* Mobile Title - Smaller */}
+               <div className="hidden max-mid:block max-sm:hidden flex-1">
+                    <span className="text-white/80 text-lg font-semibold truncate block">
                          {AdminPanelItemData[ActivePage.parent]?.child[ActivePage.child]?.text ||
                               "Admin Panel"}
                     </span>
@@ -42,13 +49,13 @@ const Header = ({ SidebarActive, setSidebarActive, ActivePage }) => {
                     <SvgNotification className="fill-white/80 w-10 h-10" />
                </div> */}
                <div className="min-mid:ml-auto max-mid:mr-auto">
-                    <div className="flex items-center relative hover:shadow-[0px_0px_20px_20px_#fffffff]">
-                         <SvgSearch className="w-6 h-6 stroke-3 stroke-cosmic-purple absolute left-3 cursor-pointer" />
+                    <div className="flex items-center relative">
+                         <SvgSearch className="w-6 h-6 max-sm:w-5 max-sm:h-5 stroke-3 stroke-cosmic-purple absolute left-3 max-sm:left-2 cursor-pointer" />
                          <div>
                               <input
                                    type="text"
                                    placeholder="Search..."
-                                   className="w-max text-white/80 placeholder:text-white/80 border-1 border-slate/70 rounded-xl py-3 pr-5 pl-12 outline-none"
+                                   className="w-full max-w-[200px] max-mid:max-w-[150px] max-sm:max-w-[100px] text-white/80 placeholder:text-white/80 text-sm max-sm:text-xs border-1 border-slate/70 rounded-xl py-3 max-sm:py-2 pr-5 max-sm:pr-3 pl-12 max-sm:pl-8 outline-none bg-transparent"
                               />
                          </div>
                     </div>
