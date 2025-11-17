@@ -3,8 +3,12 @@ import SvgNotification from "../../assets/Icons/AdminPage/Header/SvgNotification
 import SvgSearch from "../../assets/Icons/AdminPage/Header/SvgSearch";
 import MenuIcon from "../../Components/MenuIcon";
 import { AdminPanelItemData } from "../../Constants";
+import SvgLight from "../../assets/Icons/AdminPage/SvgLight";
+import SvgDark from "../../assets/Icons/AdminPage/SvgDark";
+import { switchTheme } from "../../contexts/SwitchTheme";
 
 const Header = ({ SidebarActive, setSidebarActive, ActivePage }) => {
+     const [DarkMode, setDarkMode] = useState(true);
      const [Text, setText] = useState(AdminPanelItemData[ActivePage.parent]?.text || "Admin Panel");
 
      useEffect(() => {
@@ -42,13 +46,23 @@ const Header = ({ SidebarActive, setSidebarActive, ActivePage }) => {
                               "Admin Panel"}
                     </span>
                </div>
+               <div
+                    onClick={() => {
+                         switchTheme();
+                         setDarkMode(!DarkMode);
+                    }}
+                    className="min-mid:ml-auto max-mid:mr-auto p-1 border-2 border-shadow rounded-xl"
+               >
+                    <SvgLight className={`fill-white/80 w-10 h-10 transition-all duration-500 ${DarkMode ? "opacity-0 hidden " : "opacity-100"}`} />
+                    <SvgDark className={`fill-white/80 w-10 h-10 transition-all duration-500 ${DarkMode ? "opacity-100 " : "opacity-0 hidden"}`} />
+               </div>
                {/* <div className="ml-auto mr-6 cursor-pointer relative">
                     <span className="flex justify-center items-center text-white/80 text-sm absolute w-5 h-5 rounded-full -right-1 -top-1 border-2 border-white/80 bg-midnight">
                          3
                     </span>
                     <SvgNotification className="fill-white/80 w-10 h-10" />
                </div> */}
-               <div className="min-mid:ml-auto max-mid:mr-auto">
+               {/* <div className="min-mid:ml-auto max-mid:mr-auto">
                     <div className="flex items-center relative">
                          <SvgSearch className="w-6 h-6 max-sm:w-5 max-sm:h-5 stroke-3 stroke-cosmic-purple absolute left-3 max-sm:left-2 cursor-pointer" />
                          <div>
@@ -59,7 +73,7 @@ const Header = ({ SidebarActive, setSidebarActive, ActivePage }) => {
                               />
                          </div>
                     </div>
-               </div>
+               </div> */}
           </section>
      );
 };
