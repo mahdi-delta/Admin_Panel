@@ -65,18 +65,21 @@ const AddUser = () => {
                          type="text"
                          placeHolder="Enter First Name"
                          value={formData.firstname}
+                         required={true}
                          onChange={(e) => setFormData({ ...formData, firstname: e.target.value })}
                     />
                     <Input
                          type="text"
                          placeHolder="Enter Last Name"
                          value={formData.lastname}
+                         required={true}
                          onChange={(e) => setFormData({ ...formData, lastname: e.target.value })}
                     />
                     <Input
                          type="email"
                          placeHolder="Enter Email"
                          value={formData.email}
+                         required={true}
                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     />
                     <Input
