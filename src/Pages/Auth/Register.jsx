@@ -65,19 +65,19 @@ const Register = () => {
                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-electric-purple/8 rounded-full blur-3xl animate-pulse delay-500" />
 
                {/* Decorative Boxes - Left */}
-               <span className="absolute left-4 md:left-50 top-1/4 border-electric-purple/40 border-2 w-28 h-44 md:w-36 md:h-60 rounded-3xl shadow-[0_0_120px_8px_rgba(112,100,233,0.3)] skew-y-8 hidden sm:block group">
+               <span className="absolute left-4 md:left-50 top-1/4 border-electric-purple/40 border-2 w-28 h-44 md:w-36 md:h-60 rounded-3xl shadow-[0_0_120px_8px_rgba(112,100,233,0.3)] skew-y-8 hidden sm:block group transition-all duration-500 hover:scale-110 hover:border-electric-purple/70 hover:shadow-[0_0_160px_12px_rgba(112,100,233,0.5)] hover:-skew-y-6 cursor-pointer">
                     {/* Geometric shapes inside */}
-                    <span className="absolute top-8 left-8 w-14 h-14 border-2 border-electric-purple/70 rounded-lg rotate-45 shadow-[0_0_15px_rgba(112,100,233,0.6)]"></span>
-                    <span className="absolute bottom-10 right-8 w-10 h-10 bg-cosmic-purple/40 rounded-full shadow-[0_0_20px_rgba(122,53,201,0.7)]"></span>
-                    <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 border-2 border-shadow/70 rounded-full shadow-[0_0_15px_rgba(39,40,56,0.6)]"></span>
+                    <span className="absolute top-8 left-8 w-14 h-14 border-2 border-electric-purple/70 rounded-lg rotate-45 shadow-[0_0_15px_rgba(112,100,233,0.6)] transition-all duration-500 group-hover:rotate-90 group-hover:scale-110 group-hover:border-electric-purple group-hover:shadow-[0_0_25px_rgba(112,100,233,0.9)]"></span>
+                    <span className="absolute bottom-10 right-8 w-10 h-10 bg-cosmic-purple/40 rounded-full shadow-[0_0_20px_rgba(122,53,201,0.7)] transition-all duration-500 group-hover:scale-125 group-hover:bg-cosmic-purple/60 group-hover:shadow-[0_0_30px_rgba(122,53,201,1)]"></span>
+                    <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 border-2 border-shadow/70 rounded-full shadow-[0_0_15px_rgba(39,40,56,0.6)] transition-all duration-500 group-hover:scale-150 group-hover:border-electric-purple/50 group-hover:shadow-[0_0_25px_rgba(112,100,233,0.7)]"></span>
                </span>
 
                {/* Decorative Boxes - Right */}
-               <span className="absolute right-4 md:right-50 top-1/3 border-cosmic-purple/40 border-2 w-28 h-44 md:w-36 md:h-60 rounded-3xl shadow-[0_0_120px_8px_rgba(122,53,201,0.3)] -skew-y-8 hidden sm:block group">
+               <span className="absolute right-4 md:right-50 top-1/3 border-cosmic-purple/40 border-2 w-28 h-44 md:w-36 md:h-60 rounded-3xl shadow-[0_0_120px_8px_rgba(122,53,201,0.3)] -skew-y-8 hidden sm:block group transition-all duration-500 hover:scale-110 hover:border-cosmic-purple/70 hover:shadow-[0_0_160px_12px_rgba(122,53,201,0.5)] hover:skew-y-6 cursor-pointer">
                     {/* Geometric shapes inside */}
-                    <span className="absolute top-10 right-8 w-12 h-12 border-2 border-cosmic-purple/70 rotate-12 shadow-[0_0_15px_rgba(122,53,201,0.6)]"></span>
-                    <span className="absolute bottom-10 left-8 w-9 h-9 bg-electric-purple/40 rounded-full shadow-[0_0_20px_rgba(112,100,233,0.7)]"></span>
-                    <span className="absolute top-1/3 left-1/3 w-7 h-7 border-2 border-shadow/70 shadow-[0_0_15px_rgba(39,40,56,0.6)]"></span>
+                    <span className="absolute top-10 right-8 w-12 h-12 border-2 border-cosmic-purple/70 rotate-12 shadow-[0_0_15px_rgba(122,53,201,0.6)] transition-all duration-500 group-hover:rotate-45 group-hover:scale-110 group-hover:border-cosmic-purple group-hover:shadow-[0_0_25px_rgba(122,53,201,0.9)]"></span>
+                    <span className="absolute bottom-10 left-8 w-9 h-9 bg-electric-purple/40 rounded-full shadow-[0_0_20px_rgba(112,100,233,0.7)] transition-all duration-500 group-hover:scale-125 group-hover:bg-electric-purple/60 group-hover:shadow-[0_0_30px_rgba(112,100,233,1)]"></span>
+                    <span className="absolute top-1/3 left-1/3 w-7 h-7 border-2 border-shadow/70 shadow-[0_0_15px_rgba(39,40,56,0.6)] transition-all duration-500 group-hover:scale-150 group-hover:border-cosmic-purple/50 group-hover:shadow-[0_0_25px_rgba(122,53,201,0.7)] group-hover:rounded-lg"></span>
                </span>
 
                <div className="w-full max-w-md relative z-10">
@@ -137,7 +137,7 @@ const Register = () => {
 
                                    <button
                                         type="submit"
-                                        className="w-full py-4 rounded-xl font-semibold text-white bg-gradient-to-r from-electric-purple via-cosmic-purple to-electric-purple hover:shadow-lg hover:shadow-cosmic-purple/50 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                                        className="w-full py-4 rounded-xl font-semibold text-white bg-gradient-to-r from-electric-purple via-cosmic-purple to-electric-purple hover:brightness-115 transition-all duration-300 hover:scale-102 active:scale-[0.98]"
                                    >
                                         Sign Up
                                    </button>

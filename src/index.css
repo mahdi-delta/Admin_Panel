@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @theme{
     /* Darkness Levels */
@@ -99,21 +100,7 @@
         animation-name: fade-in;
     }
 
-    .zoom-in {
-        animation-name: zoom-in;
-    }
-}
-/* 
-::-webkit-scrollbar{
-    display: none;
-} */
-
- /* ::-webkit-scrollbar{
-  scrollbar-width: thin;
-  scrollbar-color: rgba(100,100,100,0.45) transparent;
-} */
-
-/* WebKit */
+    /* WebKit */
 ::-webkit-scrollbar {
   width: 6px; /* very thin */
   height: 6px;

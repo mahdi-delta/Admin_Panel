@@ -1,4 +1,4 @@
-const Input = ({ type, placeHolder, children = "", onChange = null }) => {
+const Input = ({ type, placeHolder, children = "", onChange = null, required = false }) => {
      return (
           <div
                onChange={onChange}
@@ -8,6 +8,7 @@ const Input = ({ type, placeHolder, children = "", onChange = null }) => {
                <input
                     type={type}
                     placeholder={placeHolder}
+                    required={required}
                     className="w-full border-none outline-none placeholder:text-slate text-gray-400 peer"
                />
           </div>
