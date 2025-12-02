@@ -13,15 +13,16 @@ import SvgStar from "../assets/Icons/Dashboard/SvgStar";
 import SvgPerson from "../assets/Icons/Dashboard/SvgPerson";
 import SvgTask from "../assets/Icons/Dashboard/SvgTask";
 import SvgMessage from "../assets/Icons/Dashboard/SvgMessage";
-import Project from "../Layouts/PanelLayouts/Project/Project";
+import Product from "../Layouts/PanelLayouts/Product/Product";
 import Profile from "../Layouts/PanelLayouts/Profile/Profile";
+import Contact from "../Layouts/PanelLayouts/Contact/Contact"
 
 // ============================================Sidebar item Childs================================================
 
 const DashboardChild = [
      { text: "Dashboard", page: <Dashboard /> },
-     { text: "Project", page: <Project />},
-     { text: "Content" },
+     { text: "Product", page: <Product />},
+     { text: "Contact", page: <Contact /> },
      { text: "Kanban" },
      { text: "Calendar" },
      { text: "Messages" },
